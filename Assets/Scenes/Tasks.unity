@@ -4251,8 +4251,8 @@ MonoBehaviour:
   slider2: {fileID: 7270478101698351230}
   taskButton: {fileID: 7270478102103580187}
   checkSlidersButton: {fileID: 7270478103090260612}
-  taskButtob1: {fileID: 7270478102489016474}
-  taskButon2: {fileID: 7270478101398855581}
+  taskButton1: {fileID: 7270478102489016474}
+  taskButton2: {fileID: 7270478101398855581}
   taskButton3: {fileID: 7270478101717349807}
   newVehicleButton: {fileID: 1795753894}
   checkInputButton: {fileID: 1812078908}
