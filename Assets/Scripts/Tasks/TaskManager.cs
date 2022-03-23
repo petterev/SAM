@@ -79,7 +79,7 @@ public class TaskManager : MonoBehaviour
         TextSubtask tt = new TextSubtask("aaa", commandInput);
         WaitSubtask wt = new WaitSubtask(5);
         Task ta = new Task(s, null, null, d);
-        Subtask[] st = { wt, tt, b };
+        Subtask[] st = {d2, s, wt, tt, b };
         Task t2 = new Task(st) ;
 
         taskButton.onClick.AddListener(() => IssueTask(vehicleList[i], new Task(st)));
@@ -137,8 +137,9 @@ public class TaskManager : MonoBehaviour
             {
                 StartCoroutine( CheckWaitQueue());
             }
-
+            return;
         }
+        v.ChangeColor(Color.green);
 
     }
 
@@ -223,6 +224,7 @@ public class TaskManager : MonoBehaviour
         GameObject newCar = Instantiate(carButton, carPanel);
         Vehicle newVehicle = newCar.GetComponent<Vehicle>();
         newVehicle.Name = "car00" + vehicleCount.ToString();
+        newCar.name = "car00" + vehicleCount.ToString();
         newCar.GetComponent<Button>().onClick.AddListener(delegate { ChangeActiveCar(newVehicle);  });
         vehicleCount++;
         vehicleList.Add(newVehicle);
