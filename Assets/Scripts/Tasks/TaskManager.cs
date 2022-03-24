@@ -11,7 +11,7 @@ public class TaskManager : MonoBehaviour
     public GameObject carButton;
     public Transform carPanel, taskPanel, newVehiclePanel;
     public Slider slider1, slider2;
-    public Button taskButton, checkSlidersButton, taskButtob1, taskButon2, taskButton3, newVehicleButton, checkInputButton;
+    public Button taskButton, checkSlidersButton, taskButton1, taskButton2, taskButton3, newVehicleButton, checkInputButton;
     public TMP_InputField commandInput;
     public TextMeshProUGUI timer, userID, slider1Value, slider2Value, taskStatus;
     public TextMeshProUGUI carName, taskText;
@@ -62,7 +62,9 @@ public class TaskManager : MonoBehaviour
         
         checkSlidersButton.onClick.AddListener(CheckSlidersQueue);
         dropdown.onValueChanged.AddListener(delegate { CheckDropdownQueue(); });
-        taskButtob1.onClick.AddListener(delegate { CheckButtonQueue(taskButtob1); });
+        taskButton1.onClick.AddListener(delegate { CheckButtonQueue(taskButton1); });
+        taskButton2.onClick.AddListener(delegate { CheckButtonQueue(taskButton2); });
+        taskButton3.onClick.AddListener(delegate { CheckButtonQueue(taskButton3); });
         checkInputButton.onClick.AddListener(CheckInputQueue );
 
         int i = UnityEngine.Random.Range(0, 10);
@@ -70,14 +72,14 @@ public class TaskManager : MonoBehaviour
         ChangeActiveCar(vehicleList[i]);
 
         SliderSubtask s = new SliderSubtask(3, slider1);
-        ButtonSubtask b = new ButtonSubtask(taskButtob1);
+        ButtonSubtask b = new ButtonSubtask(taskButton1);
         TextSubtask t = new TextSubtask("ddd");
         DropdownSubtask d = new DropdownSubtask(1, dropdown);
         DropdownSubtask d2 = new DropdownSubtask(3, dropdown);
         TextSubtask tt = new TextSubtask("aaa", commandInput);
         WaitSubtask wt = new WaitSubtask(5);
         Task ta = new Task(s, null, null, d);
-        Subtask[] st = { wt, tt };
+        Subtask[] st = {d2, s, wt, tt, b };
         Task t2 = new Task(st) ;
 
         taskButton.onClick.AddListener(() => IssueTask(vehicleList[i], new Task(st)));
@@ -135,8 +137,9 @@ public class TaskManager : MonoBehaviour
             {
                 StartCoroutine( CheckWaitQueue());
             }
-
+            return;
         }
+        v.ChangeColor(Color.green);
 
     }
 
@@ -221,6 +224,7 @@ public class TaskManager : MonoBehaviour
         GameObject newCar = Instantiate(carButton, carPanel);
         Vehicle newVehicle = newCar.GetComponent<Vehicle>();
         newVehicle.Name = "car00" + vehicleCount.ToString();
+        newCar.name = "car00" + vehicleCount.ToString();
         newCar.GetComponent<Button>().onClick.AddListener(delegate { ChangeActiveCar(newVehicle);  });
         vehicleCount++;
         vehicleList.Add(newVehicle);

@@ -791,7 +791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &224550607
 RectTransform:
   m_ObjectHideFlags: 0
@@ -877,7 +877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &238888914
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3070,7 +3070,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &936673519
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3808,7 +3808,7 @@ GameObject:
   - component: {fileID: 1365631792}
   - component: {fileID: 1365631791}
   m_Layer: 5
-  m_Name: InputField (TMP)
+  m_Name: TextInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4251,8 +4251,8 @@ MonoBehaviour:
   slider2: {fileID: 7270478101698351230}
   taskButton: {fileID: 7270478102103580187}
   checkSlidersButton: {fileID: 7270478103090260612}
-  taskButtob1: {fileID: 7270478102489016474}
-  taskButon2: {fileID: 7270478101398855581}
+  taskButton1: {fileID: 7270478102489016474}
+  taskButton2: {fileID: 7270478101398855581}
   taskButton3: {fileID: 7270478101717349807}
   newVehicleButton: {fileID: 1795753894}
   checkInputButton: {fileID: 1812078908}
@@ -5891,7 +5891,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7270478101345808418
 RectTransform:
   m_ObjectHideFlags: 0
