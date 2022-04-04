@@ -22,7 +22,7 @@ public class DropdownSubtask : Subtask
         {
             return false;
         }
-        MessageLog.instance.SendMessageToLog("Subtask Done");
+        EventLog.instance.AddEventToLog(null,"Subtask Done","");
 
         return true;
     }

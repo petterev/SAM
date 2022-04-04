@@ -54,6 +54,7 @@ public class TaskManager : MonoBehaviour
 
     void Start()
     {
+        
         CreateVehicles();
         
         slider1.onValueChanged.AddListener(delegate { SliderValueChange(1, slider1); });
@@ -84,6 +85,11 @@ public class TaskManager : MonoBehaviour
 
         taskButton.onClick.AddListener(() => IssueTask(vehicleList[i], new Task(st)));
 
+        for (int j = 0; j < 2000; ++j)
+        {
+            int r = UnityEngine.Random.Range(0, 20);
+            EventLog.instance.AddEventToLog(vehicleList[r],"aaaa aaaa aaaa aaaaaa aaaaa" + j, "");
+        }
     }
 
     private void Update()
@@ -117,7 +123,7 @@ public class TaskManager : MonoBehaviour
         ClearTaskWindow();
         SetCarText(veh.Name);
         taskStatus.text = veh.description;
-
+        EventLog.instance.GetEvents(veh);
         //PrintSubtasks(veh);
         PrintNextSubtask(veh);
 
@@ -179,7 +185,7 @@ public class TaskManager : MonoBehaviour
         v.ChangeColor(Color.yellow);
      
    
-        MessageLog.instance.SendMessageToLog("new task: "+ v.name);
+        EventLog.instance.AddEventToLog(null,"new task: "+ v.name,"");
    }
 
 
@@ -231,7 +237,7 @@ public class TaskManager : MonoBehaviour
     }
     public void CreateVehicles() 
     { 
-        for(int i =0; i < 10; ++i) 
+        for(int i =0; i < 20; ++i) 
         {
             CreateVehicle();
         }
@@ -259,7 +265,7 @@ public class TaskManager : MonoBehaviour
 
             return;
         }
-        MessageLog.instance.SendMessageToLog("wrong action");
+        EventLog.instance.AddEventToLog(null,"wrong action","");
         selectedVehicle.task.mistakes++;
     }
     public void CheckButtonQueue(Button btn)
@@ -285,7 +291,7 @@ public class TaskManager : MonoBehaviour
 
             return;
         }
-        MessageLog.instance.SendMessageToLog("wrong action");
+        EventLog.instance.AddEventToLog(null,"wrong action","");
         selectedVehicle.task.mistakes++;
     }
     public IEnumerator CheckWaitQueue()
@@ -337,7 +343,7 @@ public class TaskManager : MonoBehaviour
           
             return;
         }
-        MessageLog.instance.SendMessageToLog("wrong action");
+        EventLog.instance.AddEventToLog(null,"wrong action","");
         selectedVehicle.task.mistakes++;
     }
 
@@ -366,7 +372,7 @@ public class TaskManager : MonoBehaviour
            
             return;
         }
-        MessageLog.instance.SendMessageToLog("wrong action");
+        EventLog.instance.AddEventToLog(null,"wrong action","");
         selectedVehicle.task.mistakes++;
     }
 

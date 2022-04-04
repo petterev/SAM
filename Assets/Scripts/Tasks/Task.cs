@@ -50,7 +50,7 @@ public class Task
     }
     public void Complete()
     {
-        MessageLog.instance.SendMessageToLog("Task complete. Time: " + (DateTime.Now - startTime).Seconds + " Mistakes: " + mistakes);
+        EventLog.instance.AddEventToLog(null,"Task complete. Time: " + (DateTime.Now - startTime).Seconds + " Mistakes: " + mistakes,"");
 
         TaskManager.instance.ActiveVehicle.task = null;
         
