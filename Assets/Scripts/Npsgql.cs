@@ -37,8 +37,8 @@ public class Npsgql : MonoBehaviour
        // Debug.Log(sesId);
         startTime = DateTime.Now;
 
-        TestConnection();
-    
+        //  TestConnection();
+        TestPost();
     }
     private void TestConnection() 
     {
@@ -92,10 +92,31 @@ public class Npsgql : MonoBehaviour
     public void TestPost()
     {
         DateTime now = DateTime.Now;
-      //  Debug.Log((now - startTime).Seconds);
-        string time = DateTime.Now.ToString();
-        int code = UnityEngine.Random.Range(0, 100);
-        PostEvent(sesId, time, code);
+        //  Debug.Log((now - startTime).Seconds);
+        //DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss") 2016-06-22 19:10:25
+        
+        
+        string time = now.Year +"-" +
+            now.Month.ToString().PadLeft(2, '0') + "-" +
+            now.Day.ToString().PadLeft(2, '0') + " " +
+            now.Hour.ToString().PadLeft(2, '0') + ":" +
+            now.Minute.ToString().PadLeft(2, '0') + ":" +
+            now.Second.ToString().PadLeft(2, '0');
+        
+        Debug.Log(time);
+       // int code = UnityEngine.Random.Range(0, 100);
+        //PostEvent(sesId, time, code);
+    }
+    public string GetTimestamp() 
+    {
+        DateTime now = DateTime.Now;
+        
+        return now.Year + "-" +
+            now.Month.ToString().PadLeft(2, '0') + "-" +
+            now.Day.ToString().PadLeft(2, '0') + " " +
+            now.Hour.ToString().PadLeft(2, '0') + ":" +
+            now.Minute.ToString().PadLeft(2, '0') + ":" +
+            now.Second.ToString().PadLeft(2, '0');
     }
 
     private async void PostSession()
@@ -119,7 +140,7 @@ public class Npsgql : MonoBehaviour
    
 
     }
-    private async void PostEvent(string sesID, string time, int eventCode)
+    private async void PostEvent(string sesID, string time, string vehicle, int eventCode)
     {
         //OpenConnection();
           dbcon = new NpgsqlConnection(connectionString);
