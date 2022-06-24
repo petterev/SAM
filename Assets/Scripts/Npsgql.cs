@@ -6,6 +6,7 @@ using Npgsql;
 using System.IO;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.UI;
 
 /// <summary>
 /// 
@@ -17,12 +18,18 @@ public class Npsgql : MonoBehaviour
     public string UserId;   //postgres
     public string password; //fleotmgv45D.
     public TextMeshProUGUI connStatus;
+    public TextMeshProUGUI connString;
+    [SerializeField]
+    public TMP_InputField hostInput;
+    [SerializeField]
+    public TMP_InputField port;
+   
     public string sesId;
 
     public string connectionString =
       "Server=localhost;" +
       "Database=newdb;" +
-      "User ID=postgres;" +
+      "User_ID=postgres;" +
       "Password=fleotmgv45D.;";
 
    
@@ -32,13 +39,17 @@ public class Npsgql : MonoBehaviour
 
     private void Start()
     {
-        connectionString = "Server=" + server + ";Database=" + database + ";User ID=" + UserId + ";Password=" + password + ";";
+        connectionString = "Server=" + server + ";Database=" + database + ";User_ID=" + UserId + ";Password=" + password + ";";
         sesId = GetSessionIdGuid();
        // Debug.Log(sesId);
         startTime = DateTime.Now;
 
         //  TestConnection();
-        TestPost();
+      //  TestPost();
+    }
+    public void UpdateConnString() 
+    {
+        connString.text = connectionString;
     }
     private void TestConnection() 
     {
@@ -96,14 +107,9 @@ public class Npsgql : MonoBehaviour
         //DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss") 2016-06-22 19:10:25
         
         
-        string time = now.Year +"-" +
-            now.Month.ToString().PadLeft(2, '0') + "-" +
-            now.Day.ToString().PadLeft(2, '0') + " " +
-            now.Hour.ToString().PadLeft(2, '0') + ":" +
-            now.Minute.ToString().PadLeft(2, '0') + ":" +
-            now.Second.ToString().PadLeft(2, '0');
+     
         
-        Debug.Log(time);
+       
        // int code = UnityEngine.Random.Range(0, 100);
         //PostEvent(sesId, time, code);
     }
@@ -233,17 +239,7 @@ public class Npsgql : MonoBehaviour
         //  CloseConnection();
     }
 
-    private async void OpenConnection() 
-    {
-        dbcon = new NpgsqlConnection(connectionString);
-        await dbcon.OpenAsync();
-    }
-
-    private void CloseConnection()
-    {
-        dbcon.Close();
-        dbcon = null;
-    }
+  
     
 
 
